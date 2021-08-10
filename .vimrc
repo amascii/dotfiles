@@ -1,4 +1,4 @@
-" plug-in manager
+" VIMPLUG PLUGIN MANAGER
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -6,43 +6,43 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-" Plug 'vimwiki/vimwiki'
-Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" ADD NEW PLUGINS HERE
+    Plug 'junegunn/seoul256.vim'
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+    Plug 'preservim/nerdtree'
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'dense-analysis/ale'
+    Plug 'tpope/vim-surround'
+"   Plug 'vimwiki/vimwiki'
 call plug#end()
 
-let g:seoul256_background = 233
-colorscheme seoul256
-
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+let NERDTreeShowHidden=1
 
 set nocompatible
 filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
 
-" parenthesis closing
+set tabstop=4     " show existing tab with 4 spaces width
+set shiftwidth=4  " when indenting with '>', use 4 spaces width
+set expandtab     " On pressing tab, insert 4 spaces
+
+" CODE FOLDING
+set foldmethod=indent
+set nofoldenable
+
+" AUTO-CLOSE
 inoremap        (  ()<Left>
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap        {  {}<Left>
+inoremap        [  []<Left>
 
-" visual stuff
+" VISUAL 
+let g:seoul256_background = 233
+colorscheme seoul256
 syntax on
-" colorscheme desert
 
-set relativenumber
-
-" save before executing
-set autowrite
-
-set ignorecase
-set smartcase
+" SEARCH
+set ignorecase  " case insensitive 
+set smartcase   " case sensitive if uppercase letter is found
