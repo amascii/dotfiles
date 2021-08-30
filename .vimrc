@@ -19,6 +19,7 @@ call plug#begin('~/.vim/bundle')
 "   Plug 'vimwiki/vimwiki'
 call plug#end()
 
+let g:ale_python_flake8_options = '--max-line-length=180'
 let NERDTreeShowHidden=1
 
 set nocompatible
@@ -37,12 +38,19 @@ inoremap        (  ()<Left>
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap        {  {}<Left>
 inoremap        [  []<Left>
+inoremap        "  ""<Left>
 
 " VISUAL 
-let g:seoul256_background = 233
+let g:seoul256_background = 253
 colorscheme seoul256
 syntax on
+set cursorline
+set nu
+set rnu
 
 " SEARCH
 set ignorecase  " case insensitive 
 set smartcase   " case sensitive if uppercase letter is found
+
+" BACKSPACE FIX
+set backspace=indent,eol,start
