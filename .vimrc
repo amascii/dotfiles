@@ -16,6 +16,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'dense-analysis/ale'
     Plug 'tpope/vim-surround'
+    Plug 'philrunninger/nerdtree-visual-selection'
 "   Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -51,6 +52,7 @@ set rnu
 " SEARCH
 set ignorecase  " case insensitive 
 set smartcase   " case sensitive if uppercase letter is found
+set hlsearch
 
 " BACKSPACE FIX
 set backspace=indent,eol,start
